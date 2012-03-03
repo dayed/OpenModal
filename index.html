@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset='utf-8'>
+  <meta charset="utf-8">
+  <meta name="description" content="jQuery Open Modal is a powerful yet easy to use jQuery free and opensource Plugin">
+  <meta name="keywords" content="jquery,modal,window,plugin,javascript,popup,free,opensource">
 
   <title>nico87/OpenModal @ GitHub</title>
+  <link rel="stylesheet" type="text/css" href="openmodal.css">
 
   <style type="text/css">
     body {
@@ -44,6 +47,16 @@
 	<span class="small">by <a href="https://github.com/nico87">Claudio Gabriele Nicolotti</a></span>
 
 	<p>Is a free and opensource modal window jQuery plugin.</p>
+	
+	<h2>Demo</h2>
+	
+	<p>OpenModal can show your custom HTML code or load its content directly via Ajax. Check out those demos:</p>
+	<ul>
+		<li><a href="#" id="html-demo">Custom HTML code</a></li>
+		<li><a href="#" id="url-demo">Remote HTML code</a></li>
+		<li><a href="#" id="image-demo">Remote Image</a></li>
+	</ul>
+	
 
 	<h2>Installation</h2>
 
@@ -215,6 +228,15 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 try {
 var pageTracker = _gat._getTracker("UA-11809252-5");
 pageTracker._trackPageview();
-} catch(err) {}</script>"
+} catch(err) {}</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src="jquery.openmodal.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+	$("#html-demo").click(function () { $.openModal({ html: 'Your custom HTML here!', buttonCancel: false }); });
+	$("#image-demo").click(function () { $.openModal({ img: 'http://farm7.staticflickr.com/6139/5951931300_aa8ec0d3a5_z.jpg', buttonCancel: false }); });
+	$("#url-demo").click(function () { $.openModal({ url: 'http://nico87.github.com/OpenModal/url-demo.html', buttonCancel: false }); });
+});
+</script>
 </body>
 </html>
