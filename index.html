@@ -8,20 +8,20 @@
   <style type="text/css">
     body {
       margin-top: 1.0em;
-      background-color: #efcc36;
+      background-color: white;
       font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
+      color: #444;
     }
     #container {
       margin: 0 auto;
       width: 700px;
     }
-    h1 { font-size: 3.8em; color: #1033c9; margin-bottom: 3px; }
+    h1 { font-size: 3.8em; color: #444; margin-bottom: 3px; }
     h1 .small { font-size: 0.4em; }
     h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #1033c9; }
-    h3 { text-align: center; color: #1033c9; }
-    a { color: #1033c9; }
+    h2 { font-size: 1.5em; color: #444; }
+    h3 { text-align: center; color: #444; }
+    a { color: #444; }
     .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
     .download { float: right; }
     pre { background: #000; color: #fff; padding: 15px;}
@@ -35,64 +35,175 @@
 
   <div id="container">
 
-    <div class="download">
-      <a href="https://github.com/nico87/OpenModal/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/nico87/OpenModal/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
-    </div>
+  <div class="download">
+	<a href="https://github.com/nico87/OpenModal/zipball/master">
+	<img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
+	</div>
 
-    <h1><a href="https://github.com/nico87/OpenModal">OpenModal</a>
-      <span class="small">by <a href="https://github.com/nico87">nico87</a></span></h1>
+	<h1><a href="https://github.com/nico87/OpenModal">jQuery.openModal</a></h1>
+	<span class="small">by <a href="https://github.com/nico87">Claudio Gabriele Nicolotti</a></span>
 
-    <div class="description">
-      A lightweight yet powerful modal window jQuery plugin
-    </div>
+	<p>Is a free and opensource modal window jQuery plugin.</p>
 
-    
-      <p>OpenModal is a free and opensource modal window jQuery plugin</p>
+	<h2>Installation</h2>
+
+	<p>Include script after the jQuery library:</p>
+
+	<pre><code>&lt;script src="jquery.openmodal.js" type="text/javascript"&gt;&lt;/script&gt;
+	</code></pre>
+
+	<h2>Usage</h2>
+
+	<p>To open the modal window simply use</p>
+
+	<pre><code>var opnMdl = $.openModal({ html: 'your html code' });
+	</code></pre>
+
+	<h2>Options</h2>
+
+	<p>All options are passed trough a json object to the openModal function.</p>
+
+	<pre><code>url: null
+	</code></pre>
+
+	<p>The url where the modal window can get its content.</p>
+
+	<pre><code>html: null
+	</code></pre>
+
+	<p>If no URL is provided, this parameter is used to provide the HTML code to show inside the modal window.</p>
+
+	<pre><code>img: null
+	</code></pre>
+
+	<p>If no URL and HTML code are provided, this parameter is used to retrieve an image to show into the modal window.</p>
+
+	<pre><code>width: 400
+	</code></pre>
+
+	<p>The width of the window in case the url or html parameters are used. The height is calculated automatically.</p>
+
+	<pre><code>locked: false
+	</code></pre>
+
+	<p>If true, the window can't be closed by the user if the buttons are not shown. Clicking on the background does nothing.</p>
+
+	<pre><code>buttonOk: true
+	</code></pre>
+
+	<p>True to show the modal window's "Ok" button.</p>
+
+	<pre><code>buttonCancel: false
+	</code></pre>
+
+	<p>True to show the modal window's "Cancel" button.</p>
+
+	<pre><code>cssId: "openmodal"
+	</code></pre>
+
+	<p>The CSS id of the modal window's DOM object.
+	All the ids used in the modal window are based on this parameters.
+	If the cssId parameter is, in example, "openmodal":</p>
+
+	<ul>
+	<li>the id of modal window's background DOM object is openmodal_background.</li>
+	<li>the id of modal window's content DOM object is openmodal_content.</li>
+	<li>the id of modal window's buttons DOM object is openmodal_buttons.</li>
+	</ul>
+
+	<p>In case you decide to use a different id than the default, you must change the CSS selectors in src/openmodal.css to match your id.</p>
+
+	<pre><code>loaderUrl: ajax-loader.gif
+	</code></pre>
+
+	<p>The image shown while Ajax is loading the window's content.</p>
+
+	<pre><code>l10n: { lang_ok: "Ok", lang_cancel: "Cancel" }
+	</code></pre>
+
+	<p>The localizations for both the buttons.</p>
+
+	<pre><code>duration: 250
+	</code></pre>
+
+	<p>Defines the duration of the fadeIn and fadeOut effects of the modal window.</p>
+
+	<pre><code>onLoad: function ( openModal ) { }
+	</code></pre>
+
+	<p>The onLoad callback function. It is called after the modal window has loaded its content.
+	The OpenModal window jQuery object is passed as parameter.</p>
+
+	<pre><code>onSuccess: function ( openModal ) { }
+	</code></pre>
+
+	<p>This callback is executed when the user presses the "Ok" button. If it returns false, the modal window is not closed.</p>
+
+	<pre><code>onCancel: function ( openModal ) { }
+	</code></pre>
+
+	<p>This callback is executed when the user presses the "Cancel" button. If it returns false, the modal window is not closed.</p>
+
+	<pre><code>onError: function ( openModal ) { }
+	</code></pre>
+
+	<p>This callback is executed when the URL parameter encounters an error during the Ajax loading.</p>
+
+	<pre><code>onClose: function ( openModal ) { }
+	</code></pre>
+
+	<p>This callback is executed when the modal window is being closed, after the onSuccess and onCancel callbacks.</p>
+
+	<h2>Public Methods</h2>
+
+	<pre><code>OpenModal.buttonOkText( value )
+	</code></pre>
+
+	<p>Changes the text of the "Ok" button when the OpenModal window is already shown. This is useful if you want to change button's text
+	and give a feedback to the user (like when you're saving some data via Ajax).</p>
+
+	<pre><code>OpenModal.buttonCancelText( value )
+	</code></pre>
+
+	<p>Changes the text of the "Cancel" button when the OpenModal window is already shown.</p>
+
+	<pre><code>OpenModal.DOMObject()
+	</code></pre>
+
+	<p>Returns the modal window's DOM object.</p>
+
+	<h2>Contributions</h2>
+
+	<ul>
+	<li>Source hosted at <a href="https://github.com/nico87/OpenModal">GitHub</a></li>
+	<li>Report issues, questions, feature requests on <a href="https://github.com/nico87/OpenModal/issues">GitHub Issues</a></li>
+	</ul>
+
+	<p>Pull requests are very welcome! Make sure your patches are well tested. Please create a topic branch for every separate change you make.</p>
+
+	<h2>Licence</h2>
+
+	<p>This project is released under both <a href="http://www.gnu.org/licenses/gpl-2.0.html">GNU GPL V2</a> and <a href="http://www.opensource.org/licenses/mit-license.php">MIT</a> licences.</p>
+
+	<h2>Author</h2>
+
+	<p><a href="http://github.com/nico87">Claudio Gabriele Nicolotti</a></p>
     
 
-    
-      <h2>Dependencies</h2>
-      <p>jQuery</p>
-    
+	<h2>Download</h2>
+	<p>
+	You can download this project in either
+	<a href="https://github.com/nico87/OpenModal/zipball/master">zip</a> or
+	<a href="https://github.com/nico87/OpenModal/tarball/master">tar formats.
+	</p>
+	<p>You can also clone the project with <a href="http://git-scm.com">Git</a>
+	by running:
+	<pre>$ git clone git://github.com/nico87/OpenModal</pre>
+	</p>
 
-    
-      <h2>Install</h2>
-      <p>Include script after the jQuery library:
-<script src="jquery.openmodal.js" type="text/javascript"></script></p>
-    
-
-    
-      <h2>License</h2>
-      <p>This project is released under both GNU GPL V2 and MIT licences.</p>
-    
-
-    
-      <h2>Authors</h2>
-      <p>Claudio Nicolotti (http://github.com/nico87)<br/>      </p>
-    
-
-    
-      <h2>Contact</h2>
-      <p> (claudio.nicolotti@gmail.com)<br/>      </p>
-    
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="https://github.com/nico87/OpenModal/zipball/master">zip</a> or
-      <a href="https://github.com/nico87/OpenModal/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/nico87/OpenModal</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="https://github.com/nico87/OpenModal">nico87/OpenModal</a>
-    </div>
+	<div class="footer">
+	get the source code on GitHub : <a href="https://github.com/nico87/OpenModal">nico87/OpenModal</a>
+	</div>
 
   </div>
 
