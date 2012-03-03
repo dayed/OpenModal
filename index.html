@@ -232,8 +232,8 @@ pageTracker._trackPageview();
 <script src="jquery.openmodal.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function () {
-	$("#html-demo").click(function () { $.openModal({ html: 'Your custom HTML here!', buttonCancel: false }); });
-	$("#image-demo").click(function () { $.openModal({ img: 'http://farm7.staticflickr.com/6139/5951931300_aa8ec0d3a5_z.jpg', buttonCancel: false }); });
+	$("#html-demo").click(function () { $.openModal({ html: 'Your custom HTML here!', buttonCancel: false }); return false; });
+	$("#image-demo").click(function () { $.openModal({ img: 'http://farm7.staticflickr.com/6139/5951931300_aa8ec0d3a5_z.jpg', buttonCancel: false }); return false; });
 });
 </script>
 </body>
